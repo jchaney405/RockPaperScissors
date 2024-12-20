@@ -1,0 +1,61 @@
+let computerchoice = 0
+let humanchoice = ""
+var humanScore = 0
+var computerScore = 0
+var timesPlayed = 0 
+var tieScore = 0
+
+const container = document.querySelector("#container");
+const content = document.createElement("div");
+const btn = document.querySelector("#btn");
+
+function randomNumber() {
+    return Math.floor(Math.random() * 3);
+} 
+
+function getComputerChoice() {
+ switch(randomNumber()) {
+        case 0:
+            computerchoice = "Rock";
+            break;
+        case 1:
+            computerchoice = "Paper";
+            break;
+        case 2:
+            computerchoice = "Scissors";
+            break;
+        };
+ }
+
+function getHumanChoice() {
+   humanchoice = prompt("Please type your choice of Rock, Paper, or Scissors")            
+   if (humanchoice.toLowerCase() === 'rock') {humanchoice = 'Rock', playRound()}
+   else if (humanchoice.toLowerCase() === 'paper') {humanchoice = 'Paper', playRound()}
+   else if (humanchoice.toLowerCase() === 'scissors') {humanchoice = 'Scissors', playRound()}
+   else {humanchoice = prompt("You must enter one of the three choices of Rock, Paper, or Scissors. Please try again."); getHumanChoice(humanchoice);}
+}
+
+function letsGo() {
+    getComputerChoice();
+    getHumanChoice();
+}
+
+function playRound() {
+    if (humanchoice === 'Rock' && computerchoice === 'Paper') {computerScore++; timesPlayed++; console.log('You lose! Paper beats Rock')} 
+    else if (humanchoice === 'Rock' && computerchoice === 'Scissors') {humanScore++; timesPlayed++; console.log('You win! Rock beats Scissors')} 
+    else if (humanchoice === 'Paper' && computerchoice === 'Rock') {humanScore++; timesPlayed++; console.log('You win! Paper beats Rock')}
+    else if (humanchoice === 'Paper' && computerchoice === 'Scissors') {computerScore++; timesPlayed++; console.log('You lose! Scissors beat Paper')}
+    else if (humanchoice === 'Scissors' && computerchoice === 'Rock') {computerScore++; timesPlayed++; console.log('You lose! Rock beats Scissors')}
+    else if (humanchoice === 'Scissors' && computerchoice === 'Paper') {humanScore++; timesPlayed++; console.log('You win! Scissors beat Paper')}
+    else {timesPlayed++; tieScore++; console.log('You tie! ' + humanchoice + ' equals ' + computerchoice + '! Try again')};
+
+    if (timesPlayed < 5) {console.log('Your score is ' + humanScore + ' to ' + computerScore + '! You have played ' + timesPlayed + ' out of 5 games. Please play again'); }
+    else if (timesPlayed >= 5 && humanScore > computerScore) {console.log('Congratulations!!! You beat the computer! You won ' + humanScore +' to ' + computerScore + '.')}
+    else if (timesPlayed >= 5 && computerScore > humanScore) {console.log('Boo!!! You lost to the computer ' + computerScore + ' to ' + humanScore + '. Better luck next time.')}
+    else {console.log('You tied! You won ' + humanScore + ' times, lost ' + computerScore + ' times, and tied ' + tieScore + ' times. Better luck next time!')};
+}
+
+btn.onclick = letsGo;
+container.appendChild(btn)
+
+   
