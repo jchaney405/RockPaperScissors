@@ -1,0 +1,41 @@
+table {
+    background-color: #01244C;
+    text-align: center;
+    color: #CCCDCF;
+    border-color: #CCCDCF;
+    margin-bottom: 50px;
+    justify-self: center;
+    border-width: thin;
+}
+#gamesBoard {
+    margin-bottom: 15px;
+}
+thead tbody {
+    border-color: #CCCDCF;
+}
+
+button {
+    background-color: #576371;
+    color: #CCCDCF;
+    border-color: #CCCDCF;
+    border-width: thin;
+    width: 65px;
+}
+body {
+    background-color: #01244C;
+}
+h1 {
+    justify-self: center;
+    color: #CCCDCF;
+}
+td { 
+    width: 180px;
+}
+
+div {
+    justify-self: center;
+    padding-bottom: 20px;
+}
+#container {
+    padding: 0px;
+}
